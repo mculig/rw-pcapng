@@ -13,15 +13,16 @@
 #include "list"
 
 class EnhancedPacketBlock: public Block {
-uint32_t interface_id;
-uint32_t timestamp_high;
-uint32_t timestamp_low;
-uint32_t captured_packet_length;
-uint32_t original_packet_length;
-uint8_t* packet_data;
-std::list<Option> options;
 public:
-	EnhancedPacketBlock();
+	uint32_t interface_id;
+	uint32_t timestamp_high;
+	uint32_t timestamp_low;
+	uint32_t captured_packet_length;
+	uint32_t original_packet_length;
+	uint8_t* packet_data;
+	std::list<Option>* options_list;
+public:
+	EnhancedPacketBlock(uint32_t block_type, uint32_t block_length, uint8_t* buffer);
 	virtual ~EnhancedPacketBlock();
 };
 

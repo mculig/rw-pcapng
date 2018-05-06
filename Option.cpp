@@ -23,13 +23,8 @@ Option::~Option() {
 	delete option_value;
 }
 
-uint16_t Option::length()
+uint16_t Option::paddedLength()
 {
 	//Return the true option length which includes the padding.
 	return option_length+4-(option_length%4);
-}
-
-uint16_t Option::type()
-{
-	return option_type;
 }
