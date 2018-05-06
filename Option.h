@@ -11,12 +11,15 @@
 #include "cstdint"
 
 class Option {
-	uint16_t option_code;
+	uint16_t option_type;
 	uint16_t option_length;
 	uint8_t *option_value;
 public:
-	Option();
+	Option(uint8_t* buffer);
 	virtual ~Option();
+	uint16_t length();
+	uint16_t type();
+
 };
 
 #endif /* OPTION_H_ */
