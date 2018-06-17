@@ -22,7 +22,7 @@ public:
 	uint8_t* packet_data;
 	std::list<Option>* options_list;
 public:
-	EnhancedPacketBlock(uint32_t block_type, uint32_t block_length, uint8_t* buffer);
+	EnhancedPacketBlock(uint32_t block_type, uint32_t block_length, uint8_t* buffer, bool* endianness);
 	virtual ~EnhancedPacketBlock();
 };
 

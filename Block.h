@@ -8,17 +8,21 @@
 #ifndef BLOCK_H_
 #define BLOCK_H_
 
-//Options that share their type in all subclasses of Block are here to avoid defining them over and over
-#define OPT_ENDOFOPT 0
-#define OPT_COMMENT 1
-#define OPT_CUSTOM_UTF8_COPY_ALLOWED 2988
-#define OPT_CUSTOM_UTF8_COPY_FORBIDDEN 2989
-#define OPT_CUSTOM_BINARY_COPY_ALLOWED 19372
-#define OPT_CUSTOM_BINARY_COPY_FORBIDDEN 19373
-
 #include "cstdint"
 #include "fstream"
 
+
+//We'll put block types here
+enum BLOCK_TYPE{
+SECTION_HEADER_BLOCK=0x0A0D0D0A,
+INTERFACE_DESCRIPTION_BLOCK=0x00000001,
+ENHANCED_PACKET_BLOCK=0x00000006,
+SIMPLE_PACKET_BLOCK=0x00000003,
+NAME_RESOLUTION_BLOCK=0x00000004,
+INTERFACE_STATISTICS_BLOCK=0x00000005,
+CUSTOM_BLOCK_COPY_ALLOWED=0x00000BAD,
+CUSTOM_BLOCK_COPY_FORBIDDEN=0x40000BAD,
+};
 
 class Block {
 
@@ -26,10 +30,9 @@ private:
 uint32_t block_type;
 uint32_t block_length;
 
-
 public:
 	Block();
-	Block(uint32_t block_type, uint32_t block_length);
+	Block(uint32_t block_type, uint32_t block_length, bool* endianness);
 	virtual ~Block();
 	uint32_t type();
 	uint32_t length();

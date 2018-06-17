@@ -8,11 +8,6 @@
 #ifndef SECTIONHEADERBLOCK_H_
 #define SECTIONHEADERBLOCK_H_
 
-//Option types definition for this block. Option types have to be defined for every block since pcapng reuses type numbers
-#define SHB_HARDWARE 2
-#define SHB_OS 3
-#define SHB_USERAPPL 4
-
 #include "Block.h"
 #include "Option.h"
 #include "list"
@@ -25,7 +20,7 @@ public:
 	uint64_t section_length;
 	std::list<Option> *options_list;
 public:
-	SectionHeaderBlock(uint32_t block_type, uint32_t block_length,uint8_t* buffer);
+	SectionHeaderBlock(uint32_t block_type, uint32_t block_length, uint32_t bom, uint8_t* buffer, bool* endianness);
 	virtual ~SectionHeaderBlock();
 };
 
