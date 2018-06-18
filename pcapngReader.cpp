@@ -12,6 +12,7 @@
 #include "EnhancedPacketBlock.h"
 #include "NameResolutionBlock.h"
 
+//Byte order magic for little endian and big endian. Used to distinguish between the two in the Section Header Block
 #define BOM_LE 0x1A2B3C4D
 #define BOM_BE 0x4D3C2B1A
 
@@ -67,7 +68,7 @@ Block* pcapngReader::next_block()
 		}
 	}
 	//Otherwise if we're reading a big endian file
-	else if(endianness=true)
+	else if(endianness==true)
 	{
 		reverseEndian(&type);
 		reverseEndian(&length);

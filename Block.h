@@ -32,7 +32,7 @@ uint32_t block_length;
 
 public:
 	Block();
-	Block(uint32_t block_type, uint32_t block_length, bool* endianness);
+	Block(uint32_t block_type, uint32_t block_length);
 	virtual ~Block();
 	uint32_t type();
 	uint32_t length();

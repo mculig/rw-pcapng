@@ -13,7 +13,7 @@ Block::Block()
 
 }
 
-Block::Block(uint32_t block_type, uint32_t block_length, bool* endianness) {
+Block::Block(uint32_t block_type, uint32_t block_length) {
 
 	this->block_type=block_type;
 	this->block_length=block_length;

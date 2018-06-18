@@ -8,10 +8,10 @@
 #include "Option.h"
 #include "string.h"
 
-Option::Option(uint8_t* buffer) {
+Option::Option(uint8_t* buffer, uint32_t* readIndex) {
 	//Helper variable for buffer reading
 	unsigned int buffer_location=0;
-	option_type=*(buffer+buffer_location);
+	type=*(buffer+buffer_location);
 	buffer_location+=sizeof(uint16_t);
 	option_length=*(buffer+buffer_location);
 	buffer_location+=sizeof(uint16_t);
