@@ -38,3 +38,13 @@ void Helpers::readBuffer(uint8_t* buffer, uint8_t* target, uint64_t size, uint32
 	//Increment the readIndex
 	readIndex+=size;
 }
+
+void Helpers::readOptions(std::list<Option>* options, uint8_t* buffer, uint32_t* buffer_location, uint32_t block_length, bool* endianness) {
+	//When buffer_location is the same as block_length, we've reached the last byte of the block
+		while(*buffer_location<block_length)
+		{
+			Option* tmp=new Option(buffer, buffer_location, endianness);
+			options->push_back(*tmp);
+			delete tmp;
+		}
+}

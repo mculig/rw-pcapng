@@ -19,7 +19,8 @@
 pcapngReader::pcapngReader(std::string path) {
 	//Open the capture as a binary file
 	capture.open(path, std::ios::in | std::ios::binary);
-
+	//By default this will be false and that will mean little endian
+	endianness=false;
 }
 
 void pcapngReader::reverseEndian(uint32_t* var)
@@ -37,12 +38,10 @@ void pcapngReader::reverseEndian(uint32_t* var)
 
 Block* pcapngReader::next_block()
 {
-	//By default this will be false and that will mean little endian
-	endianness=false;
-	//We need to read the byte order magif if we're dealing with a section header block
-	uint32_t bom;
 	//Make sure to delete the previous block from memory.
 	delete block;
+	//We need to read the byte order magif if we're dealing with a section header block
+	uint32_t bom;
 	uint32_t type;
 	uint32_t length;
 	//Read the block type and length

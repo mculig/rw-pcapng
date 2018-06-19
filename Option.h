@@ -63,7 +63,7 @@ public:
 	uint16_t option_length;
 	uint8_t *option_value;
 public:
-	Option(uint8_t* buffer, uint32_t* readIndex);
+	Option(uint8_t* buffer, uint32_t* readIndex, bool* endianness);
 	virtual ~Option();
 	uint16_t paddedLength();
 

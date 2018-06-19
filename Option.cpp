@@ -7,16 +7,18 @@
 
 #include "Option.h"
 #include "string.h"
+#include "Helpers.h"
 
-Option::Option(uint8_t* buffer, uint32_t* readIndex) {
-	//Helper variable for buffer reading
-	unsigned int buffer_location=0;
-	type=*(buffer+buffer_location);
-	buffer_location+=sizeof(uint16_t);
-	option_length=*(buffer+buffer_location);
-	buffer_location+=sizeof(uint16_t);
+Option::Option(uint8_t* buffer, uint32_t* readIndex, bool* endianness) {
+	Helpers::readBuffer(buffer, (uint8_t*) &type, sizeof(uint16_t),readIndex,*endianness);
+	Helpers::readBuffer(buffer, (uint8_t*) &option_length, sizeof(uint16_t), readIndex, *endianness);
 	option_value=new uint8_t[option_length];
-	memcpy(option_value,buffer+buffer_location,sizeof(uint8_t)*option_length);
+	memcpy(option_value,buffer+*readIndex,sizeof(uint8_t)*option_length);
+	//Skip x bytes of padding
+	//Calculate padding byte count
+	uint8_t padding=4-(option_length%4);
+	//Increment readIndex by padding
+	*readIndex+=padding;
 }
 
 Option::~Option() {
