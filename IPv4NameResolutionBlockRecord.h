@@ -14,7 +14,7 @@ class IPv4NameResolutionBlockRecord: public NameResolutionBlockRecord {
 	uint32_t ipv4_addr;
 	char* dns_entries;
 public:
-	IPv4NameResolutionBlockRecord();
+	IPv4NameResolutionBlockRecord(uint8_t* buffer, uint16_t record_type, uint16_t record_length);
 	virtual ~IPv4NameResolutionBlockRecord();
 };
 

@@ -16,10 +16,8 @@
 class NameResolutionBlockRecord {
 	uint16_t record_type;
 	uint16_t record_length;
-	std::list<NameResolutionBlockRecord> records;
-	std::list<Option> options;
 public:
-	NameResolutionBlockRecord();
+	NameResolutionBlockRecord(uint16_t record_type, uint16_t record_length);
 	virtual ~NameResolutionBlockRecord();
 };
 

@@ -20,7 +20,9 @@ SectionHeaderBlock::SectionHeaderBlock(uint32_t block_type, uint32_t block_lengt
 	//Create the options list
 	options_list=new std::list<Option>();
 	//Use the helper to read the options. This allows all the logic to be in one easy-to-fix place
-	Helpers::readOptions(options_list, buffer, &buffer_location ,block_length, endianness);
+	//Here block_length-4 is passed as an exception to the general rule of passing the block_length due to BOM being read in the reader class to determine endianness
+	//This is necessary in order to pass the correct value of length to the block and future blocks
+	Helpers::readOptions(options_list, buffer, &buffer_location ,block_length-4, endianness);
 }
 
 SectionHeaderBlock::~SectionHeaderBlock() {

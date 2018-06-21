@@ -16,7 +16,7 @@ Option::Option(uint8_t* buffer, uint32_t* readIndex, bool* endianness) {
 	memcpy(option_value,buffer+*readIndex,sizeof(uint8_t)*option_length);
 	//Skip x bytes of padding
 	//Calculate padding byte count
-	uint8_t padding=4-(option_length%4);
+	uint8_t padding=Helpers::calculatePaddingLength(option_length);
 	//Increment readIndex by padding
 	*readIndex+=padding;
 }
@@ -28,5 +28,5 @@ Option::~Option() {
 uint16_t Option::paddedLength()
 {
 	//Return the true option length which includes the padding.
-	return option_length+4-(option_length%4);
+	return option_length+Helpers::calculatePaddingLength(option_length);
 }

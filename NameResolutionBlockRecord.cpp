@@ -7,8 +7,9 @@
 
 #include "NameResolutionBlockRecord.h"
 
-NameResolutionBlockRecord::NameResolutionBlockRecord() {
-	// TODO Auto-generated constructor stub
+NameResolutionBlockRecord::NameResolutionBlockRecord(uint16_t record_type, uint16_t record_length) {
+	this->record_type=record_type;
+	this->record_length=record_length;
 
 }
 

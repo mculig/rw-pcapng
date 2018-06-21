@@ -14,7 +14,7 @@ class IPv6NameResolutionBlockRecord: public NameResolutionBlockRecord {
 	uint8_t ipv6_addr[16];
 	char* dns_entries;
 public:
-	IPv6NameResolutionBlockRecord();
+	IPv6NameResolutionBlockRecord(uint8_t* buffer, uint16_t record_type, uint16_t record_length);
 	virtual ~IPv6NameResolutionBlockRecord();
 };
 
