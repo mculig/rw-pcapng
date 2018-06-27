@@ -24,7 +24,7 @@ private:
 	std::list<NameResolutionBlockRecord>* records;
 	std::list<Option>* options;
 public:
-	NameResolutionBlock(uint32_t block_type, uint32_t block_length, uint32_t bom, uint8_t* buffer, bool* endianness);
+	NameResolutionBlock(uint32_t block_type, uint32_t block_length, uint8_t* buffer, bool* endianness);
 	virtual ~NameResolutionBlock();
 };
 

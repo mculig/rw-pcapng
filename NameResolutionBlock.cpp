@@ -11,7 +11,7 @@
 #include "IPv6NameResolutionBlockRecord.h"
 #include "string.h"
 
-NameResolutionBlock::NameResolutionBlock(uint32_t block_type, uint32_t block_length, uint32_t bom, uint8_t* buffer, bool* endianness):Block(block_type, block_length)  {
+NameResolutionBlock::NameResolutionBlock(uint32_t block_type, uint32_t block_length, uint8_t* buffer, bool* endianness):Block(block_type, block_length)  {
 	options=new std::list<Option>;
 	records=new std::list<NameResolutionBlockRecord>;
 	uint32_t buffer_location=0;

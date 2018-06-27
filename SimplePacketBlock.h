@@ -14,7 +14,7 @@ class SimplePacketBlock: public Block {
 	uint32_t original_packet_length;
 	uint8_t* packet_data;
 public:
-	SimplePacketBlock(uint32_t block_type, uint32_t block_length, uint32_t bom, uint8_t* buffer, bool* endianness);
+	SimplePacketBlock(uint32_t block_type, uint32_t block_length, uint8_t* buffer, bool* endianness);
 	virtual ~SimplePacketBlock();
 };
 

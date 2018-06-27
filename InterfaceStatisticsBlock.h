@@ -16,9 +16,9 @@ class InterfaceStatisticsBlock: public Block {
 	uint32_t interface_id;
 	uint32_t timestamp_high;
 	uint32_t timestamp_low;
-	std::list<Option> options;
+	std::list<Option>* options;
 public:
-	InterfaceStatisticsBlock();
+	InterfaceStatisticsBlock(uint32_t block_type, uint32_t block_length, uint8_t* buffer, bool* endianness);
 	virtual ~InterfaceStatisticsBlock();
 };
 

@@ -15,9 +15,9 @@
 class CustomBlock: public Block {
 	uint32_t private_enterprise_number;
 	uint8_t* custom_data;
-	std::list<Option> options;
+	std::list<Option>* options;
 public:
-	CustomBlock();
+	CustomBlock(uint32_t block_type, uint32_t block_length, uint8_t* buffer, bool* endianness);
 	virtual ~CustomBlock();
 };
 
